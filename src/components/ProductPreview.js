@@ -7,7 +7,7 @@ import thumbnail3 from '../images/image-product-3-thumbnail.jpg';
 import productimage4 from '../images/image-product-4.jpg';
 import thumbnail4 from '../images/image-product-4-thumbnail.jpg';
 
-function ProductPreview({image, setImage, setDisplay, close, display}) {
+function ProductPreview({image, setImage, imagePreview, setImagePreview, setDisplay, close, display}) {
     return (
         <div id="image-preview" className={display}>
         
