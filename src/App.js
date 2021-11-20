@@ -17,19 +17,21 @@ import productimage1 from './images/image-product-1.jpg';
 import productimage2 from './images/image-product-2.jpg';
 import productimage3 from './images/image-product-3.jpg';
 import productimage4 from './images/image-product-4.jpg';
+import { useEffect } from 'react';
 
 function App() {
   const pictures = [productimage1, productimage2, productimage3, productimage4];
-  let i = 0;
-  const [count, setCount] = useState(0);
-  const [image, setImage] = useState(pictures[count]);
+  const [count, setCount] = useState(1);
+  const [image, setImage] = useState(pictures[0]);
   
   const [display, setDisplay] = useState('hidden');
   const [displayCart, setDisplayCart] = useState('hidden');
-  const [imagePreview, setImagePreview] = useState('');
   const [quantity, setQuantity] = useState(1);
-  const [clickCount, setClickCount] = useState(1)
-  
+  const [clickCount, setClickCount] = useState(1);
+
+  useEffect(() => {
+    setImage(pictures[count]);
+  }, [count])
 
   return (
     <div className="App">
@@ -39,7 +41,7 @@ function App() {
       <Header logo={logo} cart={cart} avatar={avatar} displayCart={displayCart} setDisplayCart={setDisplayCart} clickCount={clickCount} setClickCount={setClickCount} />
       
       {/* Mobile header */}
-      <div className="flex items-center p-5 bg-white md:hidden">
+      <div className="flex w-2/3 items-center p-5 border-2 bg-white md:hidden">
         <div className="flex items-center">
           <img src={menu} alt="menu" className="mr-4" />
           <img src={logo} alt="logo" />
@@ -51,43 +53,35 @@ function App() {
         </div>
       </div>
 
-      <div className={displayCart}>
+      <div className={`${displayCart}`}>
         <Cart displayCart={displayCart} setDisplayCart={setDisplayCart}/>
       </div>
       
       <br />
 
+      {/* Mobile image slides (below) - there's a bug in the 'view next' and 'view previous' functionality 
+      where it either takes the user one picture backwards or forwards 
+      and requires a double click --> TO BE FIXED
+      
+      UPDATE: FIXED.
+       */}
+
       <div className="flex w-full h-1/2 md:hidden ">
         <img 
           src={prev}
-          alt="previous" 
+          alt="previous"
+          id="prev"
           className="absolute z-30 h-5 w-5 p-1 bg-white rounded-full ml-3 my-auto top-56" 
-          onClick={() => {
-            setCount(count-1)
-            setImage(pictures[count]);
-            console.log(count)
-            
-            if(count <= 0) {
-              setCount(0);
-              setImage(pictures[count]);
-            } 
-          }
-            } />
+          onClick={() => {setCount(count-1); if(count <= 0) setCount(0)}} />
+        
         <img src={image} alt="previewimage" id="preview" className="w-full h-80 z-20" />
+        
         <img 
           src={next} 
           alt="next" 
-          className="absolute clear-both z-30 h-5 w-5 left-96 -ml-0 bg-white rounded-full p-1 top-56" 
-          onClick={() => {
-            setCount(count+1);
-            setImage(pictures[count]);
-              console.log(count)
-
-            if(count >= 3) {
-              setCount(3);
-              setImage(pictures[count]);
-            }
-            }} />
+          id="next"
+          className="absolute z-30 h-5 w-5 left-80 -ml-0 bg-white rounded-full p-1 top-56" 
+          onClick={() => {setCount(count+1); if(count >= 3) setCount(3)}} />
       
       </div>
 

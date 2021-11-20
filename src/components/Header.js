@@ -21,8 +21,8 @@ function Header({logo, cart, avatar, displayCart, setDisplayCart, clickCount, se
                     className="w-5 h-5 cursor-pointer" 
                     onClick={() => {
                         setClickCount(clickCount+1); 
-                        if(clickCount % 2 != 0) 
-                            setDisplayCart("border-2 w-1/5 h-48 absolute bg-white flex justify-center mt-4 right-60 shadow-lg z-10"); 
+                        if(clickCount % 2 !== 0) 
+                            setDisplayCart("border-2 w-1/5 h-48 absolute bg-white flex mt-2 right-60 shadow-lg z-10"); 
                         else 
                             setDisplayCart("hidden") }} />
                 <img src={avatar} alt="avatar" className="w-10 h-10 ml-12 cursor-pointer" />

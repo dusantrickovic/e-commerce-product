@@ -15,14 +15,14 @@ function AboutProduct({quantity, setQuantity, cartbtn}) {
             <p className="text-gray-400"><s>$250.00</s></p>
             <br />
             <div className="flex flex-row">
-                <div className="flex flex-row">
+                <div className="flex flex-row shadow-md">
                     <div className=" rounded-l-md flex px-2 cursor-pointer font-bold text-yellow-500 text-2xl items-center bg-gray-200 justify-center border-r-2 border-gray-300" onClick={() => {setQuantity(quantity-1); if(quantity <= 1) setQuantity(1)}}>
                         <p>-</p>
                     </div>
                     <div className="flex px-2 py-0.5 w-24 font-bold items-center bg-gray-200 justify-center border-r-2 border-gray-300">
                         <p> {quantity} </p>
                     </div>
-                    <div className="rounded-r-md mr-4 flex px-2 cursor-pointer font-bold text-yellow-500 text-2xl items-center bg-gray-200 justify-center border-r-2" onClick={() => setQuantity(quantity+1)} >
+                    <div className="rounded-r-md mr-0 flex px-2 cursor-pointer font-bold text-yellow-500 text-2xl items-center bg-gray-200 justify-center border-r-2" onClick={() => setQuantity(quantity+1)} >
                         <p>+</p>
                     </div>
                 </div>
