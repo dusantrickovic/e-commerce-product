@@ -27,7 +27,7 @@ function AboutProduct({quantity, setQuantity, cartbtn}) {
                     </div>
                 </div>
 
-                <button class="flex items-center ml-10 bg-yellow-500 text-white px-10 py-3 rounded-lg">
+                <button className="flex items-center ml-10 bg-yellow-500 text-white px-10 py-3 rounded-lg shadow-lg">
                     <img src={cartbtn} alt="cart" className="w-4 h-4 mr-4" />
                     <p className="font-bold text-sm">Add to cart</p>
                 </button>

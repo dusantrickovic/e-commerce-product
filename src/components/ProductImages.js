@@ -18,7 +18,7 @@ function ProductImages({image, setImage, setDisplay}) {
     return (
         <div className="flex flex-col ml-48 mt-16">
             <div>
-                <img src={image} alt="previewimage" id="preview" className="w-96 h-96 rounded-xl cursor-pointer hover:opacity-60" onClick={() => setDisplay('flex flex-col items-center w-full h-screen bg-bgblack absolute mb-4')} />
+                <img src={image} alt="previewimage" id="preview" className="w-96 h-96 rounded-xl cursor-pointer hover:opacity-60" onClick={() => setDisplay('flex flex-col items-center w-full h-screen bg-bgblack absolute mb-4 z-20')} />
             </div>
 
             <div className="flex w-96">
