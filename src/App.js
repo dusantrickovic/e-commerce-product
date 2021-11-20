@@ -20,27 +20,28 @@ import productimage4 from './images/image-product-4.jpg';
 import { useEffect } from 'react';
 
 function App() {
+
+  // Defining the states used throughout the web page using the useState hook
   const pictures = [productimage1, productimage2, productimage3, productimage4];
   const [count, setCount] = useState(1);
   const [image, setImage] = useState(pictures[0]);
-  
   const [display, setDisplay] = useState('hidden');
   const [displayCart, setDisplayCart] = useState('hidden');
   const [quantity, setQuantity] = useState(1);
   const [clickCount, setClickCount] = useState(1);
 
+  // Implemented useEffect hook to manage the product image slideshow on mobile view
   useEffect(() => {
     setImage(pictures[count]);
   }, [count])
 
   return (
     <div className="App">
-     
+      {/* Product preview page - displays only when clicked on the main image */}
       <ProductPreview close={close} image={image} setImage={setImage} display={display} setDisplay={setDisplay} />
-      
       <Header logo={logo} cart={cart} avatar={avatar} displayCart={displayCart} setDisplayCart={setDisplayCart} clickCount={clickCount} setClickCount={setClickCount} />
       
-      {/* Mobile header */}
+      {/* Mobile header - invisible on bigger screens */}
       <div className="flex w-2/3 items-center p-5 border-2 bg-white md:hidden">
         <div className="flex items-center">
           <img src={menu} alt="menu" className="mr-4" />
@@ -53,18 +54,20 @@ function App() {
         </div>
       </div>
 
+    {/* Cart section - active only when clicked on the icon; when clicked again it gets the display: none property */}
       <div className={`${displayCart}`}>
         <Cart displayCart={displayCart} setDisplayCart={setDisplayCart}/>
       </div>
       
       <br />
 
-      {/* Mobile image slides (below) - there's a bug in the 'view next' and 'view previous' functionality 
+      {
+      /* Mobile image slides (below) - there's a bug in the 'view next' and 'view previous' functionality 
       where it either takes the user one picture backwards or forwards 
       and requires a double click --> TO BE FIXED
       
-      UPDATE: FIXED.
-       */}
+      UPDATE: FIXED. */
+      }
 
       <div className="flex w-full h-1/2 md:hidden ">
         <img 
@@ -94,8 +97,6 @@ function App() {
           </div>
 
         </div>
-
-        
 
         <AboutProduct quantity={quantity} setQuantity={setQuantity} cartbtn={cartbtn} clickCount={clickCount} setClickCount={setClickCount} />
       </div>
